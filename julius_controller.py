@@ -45,12 +45,9 @@ class JuliusController:
             raise TimeoutError()
         else:
             last_index = len(sentence_list) - 1
-            param = JuliusController.index2param(index - params_start_index)
+            param_index = index - params_start_index
+            param = JuliusController.JULIUS_PARAMS[param_index]
             sentence_list[last_index][param] = self.julius_process.readline().decode('utf-8')
             if index == len(pattern_list) - 1:
                 sentence_list.append({})
             return self.input_loop(sentence_list)
-
-    @staticmethod
-    def index2param(index):
-        return JuliusController.JULIUS_PARAMS[index]
