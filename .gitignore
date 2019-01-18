@@ -1,0 +1,6 @@
+/julius/kit/*
+/tmp/*
+__pycache__
+venv
+.idea
+!.gitkeep
