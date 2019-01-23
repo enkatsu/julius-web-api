@@ -1,4 +1,5 @@
 import pexpect
+from util import tail_call_optimized
 
 
 class JuliusController:
@@ -34,6 +35,7 @@ class JuliusController:
         self.julius_process.sendline(file)
         return self.input_loop([{}])
 
+    @tail_call_optimized
     def input_loop(self, sentence_list):
         pattern_list = JuliusController.CONTROL_PATTERNS + JuliusController.JULIUS_PARAMS_PATTERNS
         params_start_index = len(JuliusController.CONTROL_PATTERNS)
